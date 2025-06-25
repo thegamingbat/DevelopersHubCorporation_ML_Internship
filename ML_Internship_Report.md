@@ -1,8 +1,9 @@
 # ML Internship Project Report
 
-**Developer:** [Your Name]  
+**Developer:** Danish Mansoor 
 **Date:** June 25, 2025  
 **Repository:** DevelopersHubCorporation_ML_Internship  
+**GitHub:** https://github.com/thegamingbat/DevelopersHubCorporation_ML_Internship.git  
 
 ---
 
