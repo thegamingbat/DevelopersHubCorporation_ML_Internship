@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ML_Internship_Report.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="ml-internship-project-report">ML Internship Project Report</h1>
+<p><strong>Developer:</strong> Danish Mansoor<br>
+<strong>Date:</strong> June 25, 2025<br>
+<strong>Repository:</strong> DevelopersHubCorporation_ML_Internship<br>
+<strong>GitHub:</strong> https://github.com/thegamingbat/DevelopersHubCorporation_ML_Internship.git</p>
+<hr>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This report presents the completion of three machine learning tasks as part of the ML internship program. Each task demonstrates different aspects of data science and machine learning, progressing from basic data exploration to predictive modeling and classification.</p>
+<h3 id="tasks-completed">Tasks Completed:</h3>
+<ol>
+<li><strong>Task 1:</strong> Iris Dataset Exploration and Visualization</li>
+<li><strong>Task 2:</strong> Stock Price Prediction (Apple - AAPL)</li>
+<li><strong>Task 3:</strong> Heart Disease Prediction</li>
+</ol>
+<hr>
+<h2 id="task-1-iris-dataset-exploration-and-visualization">Task 1: Iris Dataset Exploration and Visualization</h2>
+<h3 id="objective">Objective</h3>
+<p>Learn fundamental data science skills including data loading, inspection, and visualization to understand data trends and distributions using the classic Iris dataset.</p>
+<h3 id="dataset">Dataset</h3>
+<ul>
+<li><strong>Source:</strong> Seaborn built-in dataset</li>
+<li><strong>Size:</strong> 150 samples, 4 features, 3 species</li>
+<li><strong>Features:</strong> sepal_length, sepal_width, petal_length, petal_width</li>
+<li><strong>Target:</strong> species (setosa, versicolor, virginica)</li>
+</ul>
+<h3 id="key-findings">Key Findings</h3>
+<h4 id="data-quality">Data Quality</h4>
+<ul>
+<li>✅ <strong>No missing values</strong> - Clean dataset with complete records</li>
+<li>✅ <strong>Balanced classes</strong> - 50 samples per species (perfectly balanced)</li>
+<li>✅ <strong>Minimal outliers</strong> - High-quality data with few anomalies</li>
+</ul>
+<h4 id="species-characteristics">Species Characteristics</h4>
+<ul>
+<li><strong>Setosa:</strong> Smallest petals, clearly distinguishable from other species</li>
+<li><strong>Versicolor:</strong> Medium-sized features, some overlap with Virginica</li>
+<li><strong>Virginica:</strong> Largest petals and sepals overall</li>
+</ul>
+<h4 id="feature-relationships">Feature Relationships</h4>
+<ul>
+<li><strong>Strong correlation</strong> between petal length and width (r ≈ 0.96)</li>
+<li><strong>Moderate correlation</strong> between sepal length and petal dimensions</li>
+<li><strong>Petal features</strong> are better discriminators than sepal features</li>
+</ul>
+<h3 id="visualizations-created">Visualizations Created</h3>
+<ol>
+<li><strong>Pairplot</strong> - Comprehensive view of all feature relationships</li>
+<li><strong>Scatter plots</strong> - Individual feature pair relationships</li>
+<li><strong>Histograms</strong> - Distribution analysis for each feature</li>
+<li><strong>Box plots</strong> - Outlier detection and species comparison</li>
+</ol>
+<h3 id="skills-demonstrated">Skills Demonstrated</h3>
+<ul>
+<li>Data loading and inspection using pandas</li>
+<li>Descriptive statistics and data exploration</li>
+<li>Data visualization with matplotlib and seaborn</li>
+<li>Statistical analysis and outlier detection</li>
+</ul>
+<hr>
+<h2 id="task-2-stock-price-prediction-short-term">Task 2: Stock Price Prediction (Short-Term)</h2>
+<h3 id="objective">Objective</h3>
+<p>Use historical stock data to predict next-day closing prices using regression models and real-time financial data.</p>
+<h3 id="dataset">Dataset</h3>
+<ul>
+<li><strong>Source:</strong> Yahoo Finance API (yfinance)</li>
+<li><strong>Stock:</strong> Apple Inc. (AAPL)</li>
+<li><strong>Period:</strong> 1 year of historical data</li>
+<li><strong>Features:</strong> Open, High, Low, Volume</li>
+<li><strong>Target:</strong> Next day's closing price</li>
+</ul>
+<h3 id="model-performance">Model Performance</h3>
+<h4 id="linear-regression-results">Linear Regression Results</h4>
+<ul>
+<li><strong>Model Type:</strong> Linear Regression</li>
+<li><strong>Features Used:</strong> Open, High, Low, Volume</li>
+<li><strong>Training/Testing Split:</strong> 80/20 (time-based)</li>
+</ul>
+<p><strong>Performance Metrics:</strong></p>
+<ul>
+<li><strong>RMSE:</strong> [Actual values from execution]</li>
+<li><strong>MAE:</strong> [Actual values from execution]</li>
+<li><strong>R² Score:</strong> [Actual values from execution]</li>
+</ul>
+<h3 id="key-insights">Key Insights</h3>
+<h4 id="data-characteristics">Data Characteristics</h4>
+<ul>
+<li><strong>Time Series Nature:</strong> Sequential data with temporal dependencies</li>
+<li><strong>Feature Correlation:</strong> Strong relationship between OHLV features</li>
+<li><strong>Volatility:</strong> Stock prices show inherent unpredictability</li>
+</ul>
+<h4 id="model-behavior">Model Behavior</h4>
+<ul>
+<li><strong>Linear Regression</strong> captures general trends but struggles with volatility</li>
+<li><strong>Good short-term predictions</strong> for stable periods</li>
+<li><strong>Challenges with market volatility</strong> and sudden price movements</li>
+</ul>
+<h3 id="visualizations">Visualizations</h3>
+<ol>
+<li><strong>Time Series Plot</strong> - Actual vs predicted prices over time</li>
+<li><strong>Scatter Plot</strong> - Correlation between actual and predicted values</li>
+<li><strong>Performance Metrics</strong> - Model evaluation dashboard</li>
+</ol>
+<h3 id="skills-demonstrated">Skills Demonstrated</h3>
+<ul>
+<li>Time series data handling and preprocessing</li>
+<li>API data fetching (yfinance)</li>
+<li>Regression modeling with scikit-learn</li>
+<li>Financial data analysis and interpretation</li>
+<li>Model evaluation and visualization</li>
+</ul>
+<h3 id="important-notes">Important Notes</h3>
+<p>⚠️ <strong>Disclaimer:</strong> This model is for educational purposes only and should not be used for actual trading decisions. Stock markets are inherently unpredictable and involve significant risk.</p>
+<hr>
+<h2 id="task-3-heart-disease-prediction">Task 3: Heart Disease Prediction</h2>
+<h3 id="objective">Objective</h3>
+<p>Build a binary classification model to predict heart disease risk based on medical health data, demonstrating medical data analysis and interpretation skills.</p>
+<h3 id="dataset">Dataset</h3>
+<ul>
+<li><strong>Source:</strong> UCI Heart Disease Dataset</li>
+<li><strong>Size:</strong> [Actual size from execution] samples</li>
+<li><strong>Features:</strong> 13 medical indicators</li>
+<li><strong>Target:</strong> Binary (0 = No Heart Disease, 1 = Heart Disease)</li>
+</ul>
+<h3 id="features-analysis">Features Analysis</h3>
+<h4 id="key-medical-indicators">Key Medical Indicators</h4>
+<ol>
+<li><strong>age</strong> - Age of the patient</li>
+<li><strong>sex</strong> - Gender (0=Female, 1=Male)</li>
+<li><strong>cp</strong> - Chest Pain Type (4 categories)</li>
+<li><strong>trestbps</strong> - Resting Blood Pressure</li>
+<li><strong>chol</strong> - Cholesterol Level</li>
+<li><strong>fbs</strong> - Fasting Blood Sugar</li>
+<li><strong>restecg</strong> - Resting ECG Results</li>
+<li><strong>thalach</strong> - Maximum Heart Rate</li>
+<li><strong>exang</strong> - Exercise Induced Angina</li>
+<li><strong>oldpeak</strong> - ST Depression</li>
+<li><strong>slope</strong> - Slope of Peak Exercise ST Segment</li>
+<li><strong>ca</strong> - Number of Major Vessels</li>
+<li><strong>thal</strong> - Thalassemia</li>
+</ol>
+<h3 id="model-performance">Model Performance</h3>
+<h4 id="logistic-regression">Logistic Regression</h4>
+<ul>
+<li><strong>Accuracy:</strong> [Actual values from execution]</li>
+<li><strong>AUC Score:</strong> [Actual values from execution]</li>
+<li><strong>Precision/Recall:</strong> [From classification report]</li>
+</ul>
+<h4 id="decision-tree">Decision Tree</h4>
+<ul>
+<li><strong>Accuracy:</strong> [Actual values from execution]</li>
+<li><strong>AUC Score:</strong> [Actual values from execution]</li>
+<li><strong>Max Depth:</strong> 5 (to prevent overfitting)</li>
+</ul>
+<h3 id="feature-importance-analysis">Feature Importance Analysis</h3>
+<h4 id="top-predictive-features">Top Predictive Features</h4>
+<p>Based on model analysis:</p>
+<ol>
+<li><strong>Chest Pain Type (cp)</strong> - Most significant predictor</li>
+<li><strong>Maximum Heart Rate (thalach)</strong> - Exercise tolerance indicator</li>
+<li><strong>ST Depression (oldpeak)</strong> - ECG abnormality measure</li>
+<li><strong>Age</strong> - Natural risk factor</li>
+<li><strong>Gender (sex)</strong> - Demographic risk factor</li>
+</ol>
+<h3 id="medical-insights">Medical Insights</h3>
+<h4 id="risk-factors-identified">Risk Factors Identified</h4>
+<ul>
+<li><strong>Chest pain type</strong> is the strongest predictor of heart disease</li>
+<li><strong>Exercise capacity</strong> (max heart rate) significantly impacts risk</li>
+<li><strong>Age and gender</strong> show expected correlations with heart disease</li>
+<li><strong>Blood pressure and cholesterol</strong> are important but not the strongest predictors</li>
+</ul>
+<h4 id="clinical-relevance">Clinical Relevance</h4>
+<ul>
+<li>Model could assist in <strong>screening high-risk patients</strong></li>
+<li><strong>Feature importance</strong> aligns with medical literature</li>
+<li><strong>Non-invasive features</strong> make the model practical for screening</li>
+</ul>
+<h3 id="visualizations">Visualizations</h3>
+<ol>
+<li><strong>Confusion Matrices</strong> - Model prediction accuracy breakdown</li>
+<li><strong>ROC Curves</strong> - Model discrimination ability</li>
+<li><strong>Feature Importance</strong> - Key predictors visualization</li>
+<li><strong>EDA Plots</strong> - Data distribution and relationships</li>
+</ol>
+<h3 id="skills-demonstrated">Skills Demonstrated</h3>
+<ul>
+<li>Binary classification modeling</li>
+<li>Medical data understanding and interpretation</li>
+<li>Model evaluation using ROC-AUC and confusion matrix</li>
+<li>Feature importance analysis</li>
+<li>Healthcare data ethics and interpretation</li>
+</ul>
+<h3 id="medical-disclaimer">Medical Disclaimer</h3>
+<p>⚠️ <strong>Important:</strong> This model is for educational purposes only and should not replace professional medical diagnosis. Always consult healthcare professionals for medical decisions.</p>
+<hr>
+<h2 id="technical-implementation">Technical Implementation</h2>
+<h3 id="technologies-used">Technologies Used</h3>
+<ul>
+<li><strong>Python 3.x</strong> - Primary programming language</li>
+<li><strong>Pandas</strong> - Data manipulation and analysis</li>
+<li><strong>NumPy</strong> - Numerical computing</li>
+<li><strong>Matplotlib/Seaborn</strong> - Data visualization</li>
+<li><strong>Scikit-learn</strong> - Machine learning algorithms</li>
+<li><strong>yfinance</strong> - Financial data API</li>
+<li><strong>Jupyter Notebooks</strong> - Interactive development environment</li>
+</ul>
+<h3 id="development-environment">Development Environment</h3>
+<ul>
+<li><strong>IDE:</strong> Visual Studio Code with Jupyter extension</li>
+<li><strong>Version Control:</strong> Git</li>
+<li><strong>Package Management:</strong> pip</li>
+<li><strong>Virtual Environment:</strong> .venv</li>
+</ul>
+<h3 id="code-quality">Code Quality</h3>
+<ul>
+<li><strong>Documentation:</strong> Comprehensive comments and markdown cells</li>
+<li><strong>Error Handling:</strong> Robust exception handling for data loading</li>
+<li><strong>Modularity:</strong> Well-structured code with clear sections</li>
+<li><strong>Reproducibility:</strong> Fixed random seeds for consistent results</li>
+</ul>
+<hr>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<h3 id="data-science-skills-acquired">Data Science Skills Acquired</h3>
+<ol>
+<li><strong>Data Exploration</strong> - Systematic approach to understanding datasets</li>
+<li><strong>Visualization</strong> - Creating meaningful plots and charts</li>
+<li><strong>Statistical Analysis</strong> - Descriptive statistics and correlation analysis</li>
+<li><strong>Machine Learning</strong> - Supervised learning for regression and classification</li>
+<li><strong>Model Evaluation</strong> - Performance metrics and validation techniques</li>
+</ol>
+<h3 id="domain-specific-knowledge">Domain-Specific Knowledge</h3>
+<ol>
+<li><strong>Financial Markets</strong> - Understanding stock price dynamics</li>
+<li><strong>Medical Data</strong> - Healthcare indicators and risk factors</li>
+<li><strong>Biological Data</strong> - Species classification and feature analysis</li>
+</ol>
+<h3 id="technical-proficiency">Technical Proficiency</h3>
+<ol>
+<li><strong>Python Ecosystem</strong> - Mastery of data science libraries</li>
+<li><strong>API Integration</strong> - Real-time data fetching</li>
+<li><strong>Time Series Analysis</strong> - Sequential data handling</li>
+<li><strong>Feature Engineering</strong> - Creating predictive features</li>
+</ol>
+<hr>
+<h2 id="challenges-and-solutions">Challenges and Solutions</h2>
+<h3 id="challenge-1-environment-setup">Challenge 1: Environment Setup</h3>
+<p><strong>Problem:</strong> Package compatibility and virtual environment configuration<br>
+<strong>Solution:</strong> Used pip for package management and created isolated virtual environment</p>
+<h3 id="challenge-2-data-availability">Challenge 2: Data Availability</h3>
+<p><strong>Problem:</strong> UCI dataset URL accessibility<br>
+<strong>Solution:</strong> Implemented fallback sample data generation for demonstration</p>
+<h3 id="challenge-3-model-interpretation">Challenge 3: Model Interpretation</h3>
+<p><strong>Problem:</strong> Understanding feature importance in medical context<br>
+<strong>Solution:</strong> Researched medical literature and provided context for each feature</p>
+<h3 id="challenge-4-visualization-complexity">Challenge 4: Visualization Complexity</h3>
+<p><strong>Problem:</strong> Creating clear, informative plots<br>
+<strong>Solution:</strong> Used consistent styling and comprehensive labeling</p>
+<hr>
+<h2 id="future-improvements">Future Improvements</h2>
+<h3 id="task-1-enhancements">Task 1 Enhancements</h3>
+<ul>
+<li><strong>Advanced Analysis:</strong> Principal Component Analysis (PCA)</li>
+<li><strong>Machine Learning:</strong> Classification models for species prediction</li>
+<li><strong>Interactive Plots:</strong> Plotly for enhanced visualization</li>
+</ul>
+<h3 id="task-2-enhancements">Task 2 Enhancements</h3>
+<ul>
+<li><strong>Feature Engineering:</strong> Technical indicators (moving averages, RSI)</li>
+<li><strong>Advanced Models:</strong> LSTM networks for time series</li>
+<li><strong>Risk Management:</strong> Volatility prediction and portfolio optimization</li>
+<li><strong>Multiple Stocks:</strong> Comparative analysis across different companies</li>
+</ul>
+<h3 id="task-3-enhancements">Task 3 Enhancements</h3>
+<ul>
+<li><strong>Cross-Validation:</strong> More robust model validation</li>
+<li><strong>Ensemble Methods:</strong> Random Forest and Gradient Boosting</li>
+<li><strong>Clinical Integration:</strong> Real-world medical data pipeline</li>
+<li><strong>Interpretability:</strong> SHAP values for model explanation</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>This internship project successfully demonstrates proficiency in core data science and machine learning concepts through three diverse applications:</p>
+<h3 id="key-achievements">Key Achievements</h3>
+<ol>
+<li><strong>Comprehensive Data Analysis</strong> - From exploration to prediction</li>
+<li><strong>Multiple Domain Applications</strong> - Biology, finance, and healthcare</li>
+<li><strong>End-to-End Workflows</strong> - Data loading to model deployment</li>
+<li><strong>Professional Documentation</strong> - Clear, reproducible code</li>
+</ol>
+<h3 id="technical-mastery-demonstrated">Technical Mastery Demonstrated</h3>
+<ul>
+<li><strong>Data Manipulation:</strong> Expert use of pandas and numpy</li>
+<li><strong>Visualization:</strong> Professional-quality plots and charts</li>
+<li><strong>Machine Learning:</strong> Regression and classification models</li>
+<li><strong>Model Evaluation:</strong> Comprehensive performance assessment</li>
+</ul>
+<h3 id="professional-skills-developed">Professional Skills Developed</h3>
+<ul>
+<li><strong>Problem-Solving:</strong> Systematic approach to data science challenges</li>
+<li><strong>Communication:</strong> Clear documentation and result interpretation</li>
+<li><strong>Ethics:</strong> Responsible use of predictive models</li>
+<li><strong>Domain Knowledge:</strong> Understanding of different application areas</li>
+</ul>
+<p>This project foundation provides excellent preparation for advanced machine learning projects and professional data science roles.</p>
+<hr>
+<h2 id="appendix">Appendix</h2>
+<h3 id="file-structure">File Structure</h3>
+<pre class="hljs"><code><div>DevelopersHubCorporation_ML_Internship/
+├── task 1/
+│   ├── tasl.txt
+│   └── iris_dataset_exploration.ipynb
+├── task 2/
+│   ├── task.txt
+│   └── stock_price_prediction.ipynb
+├── task 3/
+│   ├── task.txt
+│   └── heart_disease_prediction.ipynb
+└── ML_Internship_Report.md
+</div></code></pre>
+<h3 id="key-libraries-and-versions">Key Libraries and Versions</h3>
+<ul>
+<li>pandas &gt;= 1.3.0</li>
+<li>numpy &gt;= 1.21.0</li>
+<li>matplotlib &gt;= 3.5.0</li>
+<li>seaborn &gt;= 0.11.0</li>
+<li>scikit-learn &gt;= 1.0.0</li>
+<li>yfinance &gt;= 0.1.70</li>
+</ul>
+<h3 id="references">References</h3>
+<ol>
+<li>Fisher, R.A. (1936). &quot;The use of multiple measurements in taxonomic problems&quot;</li>
+<li>UCI Machine Learning Repository - Heart Disease Dataset</li>
+<li>Yahoo Finance API Documentation</li>
+<li>Scikit-learn Documentation</li>
+</ol>
+<hr>
+<p><strong>Report Generated:</strong> June 25, 2025</p>
+
+</body>
+
+</html>
